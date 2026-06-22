@@ -34,7 +34,7 @@
 - **🛡️ عدّ لا يُخدع** — لا يُحتسب التكرار إلا إذا أدّيته بشكل كامل وصحيح. الحركات الناقصة أو محاولات الغش لا تُحتسب، لكنه في الوقت نفسه **مرن** ويتقبّل الأداء البشري الطبيعي غير المثالي.
 - **🗣️ تصحيح فوري** — يخبرك لحظياً إذا انحرف أداؤك: "انزل أكثر"، "افرد ظهرك"، "ممتاز!".
 - **🔒 خصوصية كاملة** — كل المعالجة تتم على جهازك. لا يُرفع أي فيديو ولا يُسجَّل أي شيء، أبداً.
-- **📲 يعمل بالكامل بدون إنترنت** — بعد فتحه أول مرة، يمكنك تثبيته كتطبيق واستخدامه في أي وقت دون اتصال.
+- **📲 يعمل بالكامل بدون إنترنت** — بعد فتحه أول مرة وتشعيل الكاميرا ، يمكنك تثبيته كتطبيق واستخدامه في أي وقت دون اتصال.
 - **🌐 ثنائي اللغة** — واجهة عربية كاملة (مع دعم الكتابة من اليمين لليسار) وإنجليزية.
 
 ### 🏋️ التمارين — ٤٨ تمريناً موزّعة على ٩ فئات
@@ -85,7 +85,7 @@
 - **🛡️ Counting you can't cheat** — a rep only counts when performed fully and correctly. Partial movements and cheating attempts don't count, yet it stays **forgiving** of natural, imperfect human performance.
 - **🗣️ Instant form feedback** — tells you the moment your form slips: "go lower", "straighten your back", "perfect!".
 - **🔒 Completely private** — all processing happens on your device. No video is ever uploaded or recorded.
-- **📲 Fully offline** — after the first load, install it as an app and use it anytime without a connection.
+- **📲 Fully offline** — after the first load Open the camera, install it as an app and use it anytime without a connection.
 - **🌐 Bilingual** — full Arabic (with right-to-left support) and English.
 
 ### 🏋️ Exercises — 48 across 9 categories
