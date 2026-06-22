@@ -3625,55 +3625,10 @@ document.addEventListener("touchmove",e=>{
   // hide install affordance once installed
   window.addEventListener("appinstalled",()=>{ installBtn.hidden=true; deferredPrompt=null; });
 
-  /* ---- offline service worker (registered from a Blob; cache-first) ----
-     Keeps the app and its CDN tracking libraries available without network
-     after the first successful load. Silent if the browser blocks blob SW. */
+  /* ---- Service Worker (cache-first, offline support) ----
+     يجب رفع sw.js بجانب traincam.html على Cloudflare Pages */
   if("serviceWorker" in navigator && (location.protocol==="https:"||location.hostname==="localhost")){
-    const swCode = `
-      const CACHE="formcoach-v1";
-      const CORE=[
-        "./",
-        "https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.5/pose.js",
-        "https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js"
-      ];
-      self.addEventListener("install",e=>{
-        self.skipWaiting();
-        e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE).catch(()=>{})));
-      });
-      self.addEventListener("activate",e=>{
-        e.waitUntil(caches.keys().then(ks=>Promise.all(
-          ks.filter(k=>k!==CACHE).map(k=>caches.delete(k))
-        )).then(()=>self.clients.claim()));
-      });
-      self.addEventListener("fetch",e=>{
-        const req=e.request;
-        if(req.method!=="GET")return;
-        e.respondWith(
-          caches.match(req).then(hit=>{
-            if(hit)return hit;
-            return fetch(req).then(res=>{
-              // cache same-origin + the mediapipe CDN + wasm/data assets
-              try{
-                const u=new URL(req.url);
-                const ok = u.origin===location.origin
-                  || u.host.indexOf("jsdelivr.net")>-1
-                  || /\\.(wasm|data|tflite|binarypb)$/.test(u.pathname);
-                if(ok && res && res.status===200){
-                  const copy=res.clone();
-                  caches.open(CACHE).then(c=>c.put(req,copy).catch(()=>{}));
-                }
-              }catch(_){}
-              return res;
-            }).catch(()=>caches.match("./"));
-          })
-        );
-      });
-    `;
-    try{
-      const blob=new Blob([swCode],{type:"text/javascript"});
-      const url=URL.createObjectURL(blob);
-      navigator.serviceWorker.register(url).catch(()=>{});
-    }catch(e){ /* blob SW unsupported — install still works, no offline cache */ }
+    navigator.serviceWorker.register("./sw.js").catch(()=>{});
   }
 })();
 </script>
